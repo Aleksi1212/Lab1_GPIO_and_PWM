@@ -32,12 +32,16 @@ pico_sdk_init()
 # Add the project source files
 add_executable(${PROJECT_NAME}
     src/main.c
+    src/utils.c
     # additional source files
 )
+
 
 # Link the Pico SDK libraries
 target_link_libraries(${PROJECT_NAME}
     pico_stdlib
+    hardware_pwm
+    hardware_gpio
     # additional Pico SDK libraries
 )
 
