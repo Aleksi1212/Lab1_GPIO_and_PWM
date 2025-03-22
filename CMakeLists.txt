@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 # Set the Pico SDK path (update it with your own path)
-set(PICO_SDK_PATH /home/aleksnor/pico/pico-sdk)
+set(PICO_SDK_PATH $ENV{PICO_SDK_PATH})
 
 # Set the Pico board
 set(PICO_BOARD pico_w)
@@ -12,9 +12,9 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-
-# Set the project name
-set(PROJECT_NAME Lab1)
+# Set the project name from "project_name.txt"
+set(FILE_PATH "project_name.txt")
+file(READ ${FILE_PATH} PROJECT_NAME)
 
 # Include the Pico SDK. Must be before project()
 include(${PICO_SDK_PATH}/pico_sdk_init.cmake)
