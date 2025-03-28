@@ -23,7 +23,7 @@ int main(void)
 	bool pressed = false;
 	bool led_on = true;
 
-	uint16_t led_level = MAX_LED_LEVEL+1;
+	uint16_t led_level = MAX_LED_LEVEL;
 
 	while (true)
 	{
@@ -32,7 +32,7 @@ int main(void)
 		}
 		else if (!pressed && gpio_get(SW_1) > 0) {
 			if (led_on && led_level == 0)
-				led_level = (MAX_LED_LEVEL + 1) / 2;
+				led_level = MAX_LED_LEVEL / 2;
 			else
 				led_on = !led_on;
 
@@ -41,7 +41,7 @@ int main(void)
 		}
 
 		if (led_on) {
-			if (gpio_get(SW_0) == 0 && led_level < MAX_LED_LEVEL+1) {
+			if (gpio_get(SW_0) == 0 && led_level < MAX_LED_LEVEL) {
 				led_level += 10;
 				sleep_ms(10);
 			}
